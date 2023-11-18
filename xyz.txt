@@ -1,0 +1,19 @@
+data -- host port name type lvl
+ser  -- yes  yes  yes  yes  yes
+cli  -- yes  yes  yes  no   no
+
+
+ser(data)   | cli(data)
+bind        | connect
+wait&listen | 
+accept      |
+     conn establish
+select type | wait
+send(type)  | recv(type)
+select lvl  | wait
+send(lvl)   | recv(lvl)
+load screen&comm
+
+
+check for (death-(prompt restart), disconnect-(start from select type&lvl), win-(select new lvl))
+
