@@ -14,7 +14,7 @@ class DoublyLinkedList {
     }
     insertStart(data) {
         const newNode = new Node(data);
-        if (this.head == null) {
+        if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
         }
@@ -26,7 +26,7 @@ class DoublyLinkedList {
         this.nodes += 1;
     }
     insertMid(pos, data) {
-        if (this.head == null) {
+        if (this.head === null) {
             const newNode = new Node(data);
             this.head = newNode;
             this.tail = newNode;
@@ -54,7 +54,7 @@ class DoublyLinkedList {
     }
     insertEnd(data) {
         const newNode = new Node(data);
-        if (this.head == null) {
+        if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
         }
@@ -66,8 +66,8 @@ class DoublyLinkedList {
         this.nodes += 1;
     }
     deleteStart() {
-        if (this.head == null)
-            console.log('Empty Linked List');
+        if (this.head === null)
+            console.log('Empty Doubly Linked List');
         else {
             const temp = this.head;
             this.head = this.head.next;
@@ -77,8 +77,8 @@ class DoublyLinkedList {
         }
     }
     deleteMid(pos) {
-        if (this.head == null)
-            console.log('Empty Linked List');
+        if (this.head === null)
+            console.log('Empty Doubly Linked List');
         else {
             if (pos == 1)
                 this.deleteStart();
@@ -99,8 +99,8 @@ class DoublyLinkedList {
         }
     }
     deleteEnd() {
-        if (this.head == null)
-            console.log('Empty Linked List');
+        if (this.head === null)
+            console.log('Empty Doubly Linked List');
         else {
             const temp = this.tail;
             this.tail = this.tail.prev;
