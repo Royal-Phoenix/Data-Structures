@@ -101,12 +101,15 @@ class SinglyLinkedList {
         }
     }
     display() {
-        let temp = this.head;
-        let data = ``;
-        while (temp !== null) {
-            data += `${temp.data}->`
-            temp = temp.next;
+        if (this.head === null)
+            console.log('Empty Singly Linked List');
+        else {
+            let temp = this.head, data = ``;
+            while (temp !== null) {
+                data += `${temp.data}->`
+                temp = temp.next;
+            }
+            console.log(data);
         }
-        console.log(data);
     }
 }
