@@ -13,7 +13,7 @@ class SinglyLinkedList {
     }
     insertStart(data) {
         const newNode = new Node(data);
-        if (this.head == null) {
+        if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
         }
@@ -24,7 +24,7 @@ class SinglyLinkedList {
         this.nodes += 1;
     }
     insertMid(pos, data) {
-        if (this.head == null) {
+        if (this.head === null) {
             const newNode = new Node(data);
             this.head = newNode;
             this.tail = newNode;
@@ -48,7 +48,7 @@ class SinglyLinkedList {
     }
     insertEnd(data) {
         const newNode = new Node(data);
-        if (this.head == null) {
+        if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
         }
@@ -59,8 +59,8 @@ class SinglyLinkedList {
         this.nodes += 1;
     }
     deleteStart() {
-        if (this.head == null)
-            console.log('Empty Linked List');
+        if (this.head === null)
+            console.log('Empty Singly Linked List');
         else {
             const temp = this.head;
             this.head = this.head.next;
@@ -69,8 +69,8 @@ class SinglyLinkedList {
         }
     }
     deleteMid(pos) {
-        if (this.head == null)
-            console.log('Empty Linked List');
+        if (this.head === null)
+            console.log('Empty Singly Linked List');
         else {
             if (pos == 1)
                 this.deleteStart();
@@ -89,8 +89,8 @@ class SinglyLinkedList {
         }
     }
     deleteEnd() {
-        if (this.head == null)
-            console.log('Empty Linked List');
+        if (this.head === null)
+            console.log('Empty Singly Linked List');
         else {
             let temp = this.head;
             for (let i=0; i<this.nodes-2; i++)
