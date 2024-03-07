@@ -113,8 +113,7 @@ class DoublyLinkedList {
         if (this.head === null)
             console.log('Emppty Doubly Linked List');
         else {
-            let temp = this.head;
-            let data = ``;
+            let temp = this.head, data = ``;
             for (let i=0; i<this.nodes; i++) {
                 data += `${temp.data}<-->`
                 temp = temp.next;
@@ -123,12 +122,15 @@ class DoublyLinkedList {
         console.log(data);
     }
     reverseDisplay() {
-        let temp = this.tail;
-        let data = ``;
-        for (let i=0; i<this.nodes; i++) {
-            data += `${temp.data}<-->`
-            temp = temp.prev;
+        if (this.head === null)
+            console.log('Empty Doubly Linked List');
+        else {
+            let temp = this.tail, data = ``;
+            for (let i=0; i<this.nodes; i++) {
+                data += `${temp.data}<-->`
+                temp = temp.prev;
+            }
+            console.log(data);
         }
-        console.log(data);
     }
 }
