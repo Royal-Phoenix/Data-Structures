@@ -31,18 +31,15 @@ class SinglyLinkedList {
             this.nodes += 1;
         }
         else {
-            if (pos == 1) {
+            if (pos == 1)
                 this.insertStart(data);
-            }
-            else if (pos >= this.nodes) {
+            else if (pos >= this.nodes)
                 this.insertEnd(data);
-            }
             else {
                 const newNode = new Node(data);
                 let temp = this.head;
-                for (let i=0; i<pos-2; i++) {
+                for (let i=0; i<pos-2; i++)
                     temp = temp.next;
-                }
                 newNode.next = temp.next;
                 temp.next = newNode;
                 this.nodes += 1;
@@ -62,9 +59,8 @@ class SinglyLinkedList {
         this.nodes += 1;
     }
     deleteStart() {
-        if (this.head == null) {
+        if (this.head == null)
             console.log('Empty Linked List');
-        }
         else {
             const temp = this.head;
             this.head = this.head.next;
@@ -73,16 +69,13 @@ class SinglyLinkedList {
         }
     }
     deleteMid(pos) {
-        if (this.head == null) {
+        if (this.head == null)
             console.log('Empty Linked List');
-        }
         else {
-            if (pos == 1) {
+            if (pos == 1)
                 this.deleteStart();
-            }
-            else if (pos >= this.nodes) {
+            else if (pos >= this.nodes)
                 this.deleteEnd();
-            }
             else {
                 let curr = this.head, temp = this.head.next;
                 for (let i=0; i<pos-2; i++) {
@@ -96,14 +89,12 @@ class SinglyLinkedList {
         }
     }
     deleteEnd() {
-        if (this.head == null) {
+        if (this.head == null)
             console.log('Empty Linked List');
-        }
         else {
             let temp = this.head;
-            for (let i=0; i<this.nodes-2; i++) {
+            for (let i=0; i<this.nodes-2; i++)
                 temp = temp.next;
-            }
             temp.next = null;
             this.tail = temp;
             this.nodes -= 1;
