@@ -33,12 +33,10 @@ class DoublyLinkedList {
             this.nodes += 1;
         }
         else {
-            if (pos == 1) {
+            if (pos == 1)
                 this.insertStart(data);
-            }
-            else if (pos >= this.nodes) {
+            else if (pos >= this.nodes)
                 this.insertEnd(data);
-            }
             else {
                 const newNode = new Node(data);
                 let curr = this.head, temp = this.head.next;
@@ -68,9 +66,8 @@ class DoublyLinkedList {
         this.nodes += 1;
     }
     deleteStart() {
-        if (this.head == null) {
+        if (this.head == null)
             console.log('Empty Linked List');
-        }
         else {
             const temp = this.head;
             this.head = this.head.next;
@@ -80,16 +77,13 @@ class DoublyLinkedList {
         }
     }
     deleteMid(pos) {
-        if (this.head == null) {
+        if (this.head == null)
             console.log('Empty Linked List');
-        }
         else {
-            if (pos == 1) {
+            if (pos == 1)
                 this.deleteStart();
-            }
-            else if (pos >= this.nodes) {
+            else if (pos >= this.nodes)
                 this.deleteEnd();
-            }
             else {
                 let curr = this.head, temp = this.head.next;
                 for (let i=0; i<pos-2; i++) {
@@ -105,9 +99,8 @@ class DoublyLinkedList {
         }
     }
     deleteEnd() {
-        if (this.head == null) {
+        if (this.head == null)
             console.log('Empty Linked List');
-        }
         else {
             const temp = this.tail;
             this.tail = this.tail.prev;
@@ -117,11 +110,15 @@ class DoublyLinkedList {
         }
     }
     display() {
-        let temp = this.head;
-        let data = ``;
-        for (let i=0; i<this.nodes; i++) {
-            data += `${temp.data}<-->`
-            temp = temp.next;
+        if (this.head === null)
+            console.log('Emppty Doubly Linked List');
+        else {
+            let temp = this.head;
+            let data = ``;
+            for (let i=0; i<this.nodes; i++) {
+                data += `${temp.data}<-->`
+                temp = temp.next;
+            }
         }
         console.log(data);
     }
