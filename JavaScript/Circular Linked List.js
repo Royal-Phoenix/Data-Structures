@@ -62,18 +62,19 @@ class CircularLinkedList {
     }
     deleteStart() {
         if (this.head === null)
-            console.log('Empty Circular Linked List');
+            return 'Empty Circular Linked List';
         else {
             const temp = this.head;
             this.head = this.head.next;
             this.tail.next = this.head;
             temp.next = null;
             this.nodes -= 1;
+            return temp;
         }
     }
     deleteMid(pos) {
         if (this.head === null)
-            console.log('Empty Circular Linked List');
+            return 'Empty Circular Linked List';
         else {
             if (pos == 1)
                 this.deleteStart();
@@ -88,21 +89,24 @@ class CircularLinkedList {
                 curr.next = temp.next;
                 temp.next = null;
                 this.nodes -= 1;
+                return temp;
             }
         }
     }
     deleteEnd() {
         if (this.head === null)
-            console.log('Empty Circular Linked List');
+            return 'Empty Circular Linked List';
         else {
-            let temp = this.head;
+            let curr = this.head;
             for (let i=0; i<this.nodes-2; i++) {
-                temp = temp.next;
+                curr = curr.next;
             }
-            temp.next = this.head;
-            this.tail.next = null;
-            this.tail = temp;
+            const temp = curr.next;
+            curr.next = this.head;
+            this.tail = curr;
+            temp.next = null;
             this.nodes -= 1;
+            return temp;
         }
     }
     display() {
