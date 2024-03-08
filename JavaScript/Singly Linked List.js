@@ -94,11 +94,12 @@ class SinglyLinkedList {
         if (this.head === null)
             return 'Empty Singly Linked List';
         else {
-            let temp = this.head;
+            let curr = this.head;
             for (let i=0; i<this.nodes-2; i++)
-                temp = temp.next;
-            temp.next = null;
-            this.tail = temp;
+                curr = curr.next;
+            const temp = curr.next
+            curr.next = null;
+            this.tail = curr;
             this.nodes -= 1;
             return temp
         }
