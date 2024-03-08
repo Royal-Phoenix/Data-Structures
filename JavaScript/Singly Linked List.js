@@ -60,17 +60,18 @@ class SinglyLinkedList {
     }
     deleteStart() {
         if (this.head === null)
-            console.log('Empty Singly Linked List');
+            return 'Empty Singly Linked List';
         else {
             const temp = this.head;
             this.head = this.head.next;
             temp.next = null;
             this.nodes -= 1;
+            return temp
         }
     }
     deleteMid(pos) {
         if (this.head === null)
-            console.log('Empty Singly Linked List');
+            return 'Empty Singly Linked List';
         else {
             if (pos == 1)
                 this.deleteStart();
@@ -85,12 +86,13 @@ class SinglyLinkedList {
                 curr.next = temp.next;
                 temp.next = null;
                 this.nodes -= 1;
+                return temp
             }
         }
     }
     deleteEnd() {
         if (this.head === null)
-            console.log('Empty Singly Linked List');
+            return 'Empty Singly Linked List';
         else {
             let temp = this.head;
             for (let i=0; i<this.nodes-2; i++)
@@ -98,6 +100,7 @@ class SinglyLinkedList {
             temp.next = null;
             this.tail = temp;
             this.nodes -= 1;
+            return temp
         }
     }
     display() {
