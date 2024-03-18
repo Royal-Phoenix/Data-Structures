@@ -65,7 +65,7 @@ class CircularlyLinkedList:
                 self.deleteEnd()
             else:
                 curr, temp = self.head, self.head.next
-                for i in range(pos-2):
+                for _ in range(pos-2):
                     curr, temp = curr.next, temp.next
                 curr.next = temp.next
                 temp.next = None
@@ -77,7 +77,7 @@ class CircularlyLinkedList:
             return None
         else:
             curr = self.head
-            for i in range(self.nodes-2):
+            for _ in range(self.nodes-2):
                 curr = curr.next
             temp = curr.next
             curr.next = self.head
@@ -88,7 +88,7 @@ class CircularlyLinkedList:
     
     def display(self):
         temp = self.head
-        for i in range(self.nodes):
+        for _ in range(self.nodes):
             print(temp.data, end='-->')
             temp = temp.next
         print()
