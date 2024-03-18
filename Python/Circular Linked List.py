@@ -46,7 +46,7 @@ class CircularlyLinkedList:
     
     def deleteStart(self):
         if self.head is None:
-            return 'Empty Circular Linked List'
+            return None
         else:
             temp = self.head
             self.head = self.head.next
@@ -57,7 +57,7 @@ class CircularlyLinkedList:
     
     def deleteMid(self, pos):
         if self.head is None:
-            return 'Empty Circular Linked List'
+            return None
         else:
             if pos == 1:
                 self.deleteStart()
@@ -74,7 +74,7 @@ class CircularlyLinkedList:
     
     def deleteEnd(self):
         if self.head is None:
-            return 'Empty Circular Linked List'
+            return None
         else:
             curr = self.head
             for i in range(self.nodes-2):
