@@ -44,7 +44,7 @@ class SinglyLinkedList:
     
     def deleteStart(self):
         if self.head is None:
-            return 'Empty Singly Linked List'
+            return None
         else:
             temp = self.head
             self.head = self.head.next
@@ -54,7 +54,7 @@ class SinglyLinkedList:
     
     def deleteMid(self, pos):
         if self.head is None:
-            return 'Empty Singly Linked List'
+            return None
         else:
             if pos == 1:
                 self.deleteStart()
@@ -71,7 +71,7 @@ class SinglyLinkedList:
     
     def deleteEnd(self):
         if self.head is None:
-            return 'Empty Singly Linked List'
+            return None
         else:
             curr = self.head
             for i in range(self.nodes-2):
