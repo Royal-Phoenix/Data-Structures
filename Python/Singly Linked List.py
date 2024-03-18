@@ -74,7 +74,7 @@ class SinglyLinkedList:
             return None
         else:
             curr = self.head
-            for i in range(self.nodes-2):
+            for _ in range(self.nodes-2):
                 curr = curr.next
             temp = curr.next
             curr.next = None
