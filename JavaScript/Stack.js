@@ -39,7 +39,7 @@ class Stack {
     }
     searchValue(data) {
         let temp = this.top, pos = 1;
-        while (temp !== null) {
+        for (let i=0; i<this.nodes; i++) {
             if (temp.data == data) {break;}
             temp = temp.next;
             pos += 1;
