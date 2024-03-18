@@ -35,8 +35,7 @@ class Queue {
         }
     }
     peekValue() {
-        if (this.front === null) {return null;}
-        else {return this.front;}
+        return this.front;
     }
     searchValue(data) {
         let temp = this.front, pos = 1;
