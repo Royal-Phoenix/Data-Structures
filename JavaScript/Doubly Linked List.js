@@ -117,7 +117,7 @@ class DoublyLinkedList {
             console.log('Empty Doubly Linked List');
         else {
             let temp = this.head, data = ``;
-            for (let i=0; i<this.nodes; i++) {
+            while (temp !== null) {
                 data += `${temp.data}<-->`
                 temp = temp.next;
             }
@@ -129,7 +129,7 @@ class DoublyLinkedList {
             console.log('Empty Doubly Linked List');
         else {
             let temp = this.tail, data = ``;
-            for (let i=0; i<this.nodes; i++) {
+            while (temp !== null) {
                 data += `${temp.data}<-->`
                 temp = temp.prev;
             }
