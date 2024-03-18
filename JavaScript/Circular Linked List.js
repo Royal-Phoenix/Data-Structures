@@ -62,7 +62,7 @@ class CircularLinkedList {
     }
     deleteStart() {
         if (this.head === null)
-            return 'Empty Circular Linked List';
+            return null;
         else {
             const temp = this.head;
             this.head = this.head.next;
@@ -74,7 +74,7 @@ class CircularLinkedList {
     }
     deleteMid(pos) {
         if (this.head === null)
-            return 'Empty Circular Linked List';
+            return null;
         else {
             if (pos == 1)
                 this.deleteStart();
@@ -95,7 +95,7 @@ class CircularLinkedList {
     }
     deleteEnd() {
         if (this.head === null)
-            return 'Empty Circular Linked List';
+            return null;
         else {
             let curr = this.head;
             for (let i=0; i<this.nodes-2; i++) {
