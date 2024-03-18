@@ -74,6 +74,7 @@ class DoublyLinkedList {
             this.head.prev = null;
             temp.next = null;
             this.nodes -= 1;
+            return temp;
         }
     }
     deleteMid(pos) {
@@ -95,6 +96,7 @@ class DoublyLinkedList {
                 temp.next = null;
                 temp.prev = null;
                 this.nodes -= 1;
+                return temp;
             }
         }
     }
@@ -107,6 +109,7 @@ class DoublyLinkedList {
             temp.prev = null;
             this.tail.next = null;
             this.nodes -= 1;
+            return temp;
         }
     }
     display() {
