@@ -60,7 +60,7 @@ class SinglyLinkedList {
     }
     deleteStart() {
         if (this.head === null)
-            return 'Empty Singly Linked List';
+            return null;
         else {
             const temp = this.head;
             this.head = this.head.next;
@@ -71,7 +71,7 @@ class SinglyLinkedList {
     }
     deleteMid(pos) {
         if (this.head === null)
-            return 'Empty Singly Linked List';
+            return null;
         else {
             if (pos == 1)
                 this.deleteStart();
@@ -92,7 +92,7 @@ class SinglyLinkedList {
     }
     deleteEnd() {
         if (this.head === null)
-            return 'Empty Singly Linked List';
+            return null;
         else {
             let curr = this.head;
             for (let i=0; i<this.nodes-2; i++)
