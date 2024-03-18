@@ -30,7 +30,7 @@ class Stack:
     
     def searchValue(self, data):
         temp, pos = self.top, 1
-        while temp is not None:
+        for _ in range(self.nodes):
             if temp.data == data:
                 break
             temp = temp.next
