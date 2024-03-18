@@ -66,7 +66,7 @@ class SinglyLinkedList {
             this.head = this.head.next;
             temp.next = null;
             this.nodes -= 1;
-            return temp
+            return temp;
         }
     }
     deleteMid(pos) {
@@ -86,7 +86,7 @@ class SinglyLinkedList {
                 curr.next = temp.next;
                 temp.next = null;
                 this.nodes -= 1;
-                return temp
+                return temp;
             }
         }
     }
@@ -101,7 +101,7 @@ class SinglyLinkedList {
             curr.next = null;
             this.tail = curr;
             this.nodes -= 1;
-            return temp
+            return temp;
         }
     }
     display() {
