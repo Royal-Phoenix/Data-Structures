@@ -17,7 +17,7 @@ class Stack:
     
     def popValue(self):
         if self.bottom is None:
-            return 'Empty Stack'
+            return None
         else:
             temp = self.top
             self.top = self.top.next
