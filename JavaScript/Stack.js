@@ -25,7 +25,7 @@ class Stack {
     }
     popValue() {
         if (this.bottom === null)
-            return 'Empty Stack';
+            return null;
         else {
             const temp = this.top;
             this.top = this.top.next;
