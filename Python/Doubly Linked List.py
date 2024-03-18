@@ -1,102 +1,109 @@
 class Node:
     def __init__(self, data):
-       self.data = data
-       self.prev = None
-       self.next = None
+       self.data, self.prev, self.next = data, None, None
  
 class DoublyLinkedList:
     def __init__(self):
-        self.head = None
-        self.tail = None
-
-    def Create(self):
-        n = int(input("Enter the Number of Elements : "))
-        for i in range(n):
-            data = int(input("Enter an Element : "))
-            self.Insert_End(data)
+        self.head, self.tail, self.nodes = None, None, 0
     
-    def Display(self):
-        temp = self.head
-        while temp:
-            print("<-->",temp.data,end = " ")
-            temp = temp.next
-        print("<-->")
-    
-    def Insert_Beg(self,data):
-        new = Node(data)
-        new.next = self.head
-        self.head.prev = new
-        new.prev = None
-        self.head = new
-    
-    def Insert_Mid(self,pos,data):
-        new = Node(data)
-        temp = self.head
-        for i in range(pos-1):
-            temp = temp.next
-        new.next = temp.next
-        temp.next = new
-        new.prev = temp
-        new.next.prev = new
-    
-    def Insert_End(self,data):
+    def insertStart(self, data):
         new = Node(data)
         if self.head is None:
-            new.prev = None
+            self.head, self.tail = new, new
+        else:
+            new.next = self.head
+            self.head.prev = new
             self.head = new
+        self.nodes += 1
+    
+    def insertMid(self, pos, data):
+        if self.head is None:
+            new = Node(data)
+            self.head, self.tail = new, new
+            self.nodes += 1
+        else:
+            if pos == 1:
+                self.insertStart(data)
+            elif pos >= self.nodes:
+                self.insertEnd(data)
+            else:
+                new = Node(data)
+                curr, temp = self.head, self.head.next
+                for _ in range(pos-2):
+                    curr, temp = curr.next, temp.next
+                curr.next = new
+                new.prev = curr
+                new.next = temp
+                temp.prev = new
+                self.nodes += 1
+    
+    def insertEnd(self, data):
+        new = Node(data)
+        if self.head is None:
+            self.head, self.tail = new, new
+        else:
+            self.tail.next = new
+            new.prev = self.tail
+            self.tail = new
+        self.nodes += 1
+    
+    def deleteStart(self):
+        if self.head is None:
+            return None
         else:
             temp = self.head
-            while temp.next:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
+            self.nodes -= 1
+            return temp
+    
+    def deleteMid(self,pos):
+        if self.head is None:
+            return None
+        else:
+            if pos == 1:
+                self.deleteStart()
+            elif pos >= self.nodes:
+                self.deleteEnd()
+            else:
+                curr, temp = self.head, self.head.next
+                for _ in range(pos-2):
+                    curr, temp = curr.next, temp.next
+                curr.next = temp.next
+                temp.next.prev = curr
+                temp.prev = None
+                temp.next = None
+                self.nodes -= 1
+                return temp
+    
+    def deleteEnd(self):
+        if self.head is None:
+            return None
+        else:
+            temp = self.tail
+            self.tail = self.tail.prev
+            temp.prev = None
+            self.tail.next = None
+            self.nodes -= 1
+            return temp
+    
+    def display(self):
+        if self.head is None:
+            print('Empty Doubly Linked List')
+        else:
+            temp = self.head
+            while temp is not None:
+                print(temp.data, end='<-->')
                 temp = temp.next
-            temp.next = new
-            new.prev = temp
-            self.tail = new
+            print()
     
-    def Delete_Beg(self):
-        temp = self.head.next
-        self.head.next = None
-        self.head = temp
-        temp.prev = None
-    
-    def Delete_Mid(self,pos):
-        temp = self.head.next
-        cur = self.head
-        for i in range(1,pos):
-            temp = temp.next
-            cur = cur.next
-        cur.next = temp.next
-        temp.next.prev = cur
-        temp.prev = None
-        temp.next = None
-    
-    def Delete_End(self):
-        temp = self.head.next
-        cur = self.head
-        while temp.next:
-            temp = temp.next
-            cur = cur.next
-        temp.prev = None
-        cur.next = None
-
-obj = DoublyLinkedList()
-obj.Create()
-obj.Display()
-print("Doubly Linked List Creation\n")
-obj.Insert_Beg(20)
-obj.Display()
-print("Doubly Linked List Insertion at Beginning\n")
-obj.Insert_Mid(3,30)
-obj.Display()
-print("Doubly Linked List Insertion at Middle at Position 3\n")
-obj.Insert_End(40)
-obj.Display()
-print("Doubly Linked List Insertion at End\n")
-obj.Delete_Beg()
-obj.Display()
-print("Doubly Linked List Deletion at Beginning\n")
-obj.Delete_Mid(2)
-obj.Display()
-print("Doubly Linked List Deletion at Middle at Position 2\n")
-obj.Delete_End()
-obj.Display()
-print("Doubly Linked List Deletion at End")
+    def reverseDisplay(self):
+        if self.head is None:
+            print('Empty Doubly Linked List')
+        else:
+            temp = self.tail
+            while temp is not None:
+                print(temp.data, end='<-->')
+                temp = temp.prev
+            print()
