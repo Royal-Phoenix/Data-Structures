@@ -25,7 +25,7 @@ class Queue {
     }
     dequeueValue() {
         if (this.front === null)
-            return 'Empty Queue';
+            return null;
         else {
             const temp = this.front;
             this.front = this.front.next;
