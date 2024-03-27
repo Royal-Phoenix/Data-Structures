@@ -1,43 +1,51 @@
-class Binary_Tree:
+class Node:
     def __init__(self,data):
-        self.data = data
-        self.left = None
-        self.right = None
+        self.data, self.left, self.right = data, None, None
+
+class BinaryTree:
+    def __init__(self):
+        self.root, self.nodes = None, 0
     
-    def In_Order(self,root):
-        if root:
-            root.In_Order(root.left)
-            print(str(root.data) + "-->",end = "")
-            root.In_Order(root.right)
+    def insertNode(self, data):
+        self.nodes += 1
+        if self.root is not None:
+            path, root = bin(self.nodes)[3:], self.root
+            for direction in path[:-1]:
+                root = root.left if direction == '0' else root.right
+            if path[-1] == '0':
+                root.left = Node(data)
+            else:
+                root.right = Node(data)
+        else:
+            self.root = Node(data)
     
-    def Pre_Order(self,root):
-        if root:
-            print(str(root.data) + "-->",end = "")
-            root.Pre_Order(root.left)
-            root.Pre_Order(root.right)
+    def deleteNode(self):
+        if self.nodes > 1:
+            path, root = bin(self.nodes)[3:], self.root
+            for direction in path[:-1]:
+                root = root.left if direction == '0' else root.right
+            if path[-1] == '0':
+                root.left = None
+            else:
+                root.right = None
+        else:
+            self.root = None
+        self.nodes -= 1
     
-    def Post_Order(self,root):
-        if root:
-            root.Post_Order(root.left)
-            root.Post_Order(root.right)
-            print(str(root.data) + "-->",end = "")
-            
-a1 = Binary_Tree(35)
-a2 = Binary_Tree(20)
-a3 = Binary_Tree(40)
-a4 = Binary_Tree(10)
-a5 = Binary_Tree(5)
-a6 = Binary_Tree(8)
-a7 = Binary_Tree(50)
-a1.left = a2
-a1.right = a3
-a2.left = a4 # a1.left.left = a4
-a4.left = a5 # a1.left.right = a5
-a5.right = a6 # a1.right.left = a6
-a3.right = a7 # a1.right.right = a7
-print("Inorder Traversal")
-print(a1.In_Order(a1))
-print("Preorder Traversal")
-print(a1.Pre_Order(a1))
-print("Postorder Traversal")
-print(a1.Post_Order(a1))
+    def inOrder(self, root):
+        if root is not None:
+            self.inOrder(root.left)
+            print(root.data, end='-->')
+            self.inOrder(root.right)
+    
+    def preOrder(self, root):
+        if root is not None:
+            print(root.data, end='-->')
+            self.preOrder(root.left)
+            self.preOrder(root.right)
+    
+    def postOrder(self, root):
+        if root is not None:
+            self.postOrder(root.left)
+            self.postOrder(root.right)
+            print(root.data, end='-->')
