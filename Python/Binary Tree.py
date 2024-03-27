@@ -32,6 +32,19 @@ class BinaryTree:
             self.root = None
         self.nodes -= 1
     
+    def searchNode(self, data):
+        queue, count = [self.root], 1
+        while queue is not None:
+            root, queue = queue[0], queue[1:]
+            if root.data == data:
+                return count
+            if root.left is not None:
+                queue.append(root.left)
+                count += 1
+            if root.right is not None:
+                queue.append(root.right)
+                count += 1
+    
     def inOrder(self, root):
         if root is not None:
             self.inOrder(root.left)
