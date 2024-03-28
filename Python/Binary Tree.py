@@ -34,19 +34,18 @@ class BinaryTree:
         return node
     
     def searchNode(self, data):
-        queue, count = [self.root], 1
+        queue, count = [self.root], 0
         while queue is not None:
             if queue == []:
                 return None
             root, queue = queue.pop(0), queue
+            count += 1
             if root.data == data:
                 return bin(count)[3:]
             if root.left is not None:
                 queue.append(root.left)
-                count += 1
             if root.right is not None:
                 queue.append(root.right)
-                count += 1
     
     def inOrder(self, root):
         if root is not None:
