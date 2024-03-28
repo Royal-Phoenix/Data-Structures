@@ -25,19 +25,22 @@ class BinaryTree:
             for direction in path[:-1]:
                 root = root.left if direction == '0' else root.right
             if path[-1] == '0':
-                root.left = None
+                node, root.left = root.left, None
             else:
-                root.right = None
+                node, root.right = root.right, None
         else:
-            self.root = None
+            node, self.root = self.root, None
         self.nodes -= 1
+        return node
     
     def searchNode(self, data):
         queue, count = [self.root], 1
         while queue is not None:
-            root, queue = queue[0], queue[1:]
+            if queue == []:
+                return None
+            root, queue = queue.pop(0), queue
             if root.data == data:
-                return count
+                return bin(count)[3:]
             if root.left is not None:
                 queue.append(root.left)
                 count += 1
