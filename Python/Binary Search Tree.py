@@ -1,103 +1,75 @@
-class Binary_Search_Tree:
+class Node:
     def __init__(self,data):
-        self.root = data
-        self.left = None
-        self.right = None
+        self.data, self.left, self.right = data, None, None
 
-    def Insert(self,data):
-        if self.root is None:
-            self.root = data
-            return
-        else:
-            if self.root > data:
-                if self.left:
-                    self.left.Insert(data)
-                else:
-                    self.left = Binary_Search_Tree(data)
-            elif self.root < data:
-                if self.right:
-                    self.right.Insert(data)
-                else:
-                    self.right = Binary_Search_Tree(data)
+class BinarysearchNodeTree:
+    def __init__(self):
+        self.root, self.nodes = None, 0
     
-    def Search(self,data):
-        if self.root == data:
-            print("Element is Found")
-            return
-        else:
-            if self.root > data:
-                if self.left:
-                    self.left.Search(data)
-                else:
-                    print("Element not Found")
-            elif self.root < data:
-                if self.right:
-                    self.right.Search(data)
-                else:
-                    print("Element not Found")
-                
-    def Delete(self,data):
-        if self.root is None:
-            print("Tree is Empty")
-            return
-        else:
-            if self.root > data:
-                if self.left:
-                    self.left = self.left.Delete(data)
-                else:
-                    print("Element not Found in Tree")
-            elif self.root < data:
-                if self.right:
-                    self.right = self.right.Delete(data)
-                else:
-                    print("Element not Found in Tree")
+    def insertNode(self, root, data):
+        if root is not None:
+            if data <= root.data:
+                root.left = self.insertNode(root.left, data)
             else:
-                if self.left is None:
-                    temp = self.right
-                    self = None
-                    return temp
-                elif self.right is None:
-                    temp = self.left
-                    self = None
-                    return temp
-                node = self.right
-                while node.left:
-                    node = node.left
-                self.root = node.root
-                self.right = self.right.delete(node)       
+                root.right = self.insertNode(root.right, data)
+        else:
+            self.nodes += 1
+            return Node(data)
+        return root
     
-    def InOrder(self):
-        if self.left:
-            self.left.InOrder()
-        print(self.root," ",end = "")
-        if self.right:
-            self.right.InOrder()
+    def searchNode(self, root, data, path='', flag=False):
+        if root is None or root.data == data:
+            return path if root is not None else None
+        elif data <= root.data:
+            return self.searchNode(root.left, data, path+'0', flag)
+        else:
+            return self.searchNode(root.right, data, path+'1', flag)
     
-    def PreOrder(self):
-        print(self.root," ",end = "")
-        if self.left:
-            self.left.PreOrder()
-        if self.right:
-            self.right.PreOrder()
+    def deleteNode(self, root, data):
+        if root is None:
+            return root
+        if root.data > data:
+            root.left = self.deleteNode(root.left, data)
+            return root
+        elif root.data < data:
+            root.right = self.deleteNode(root.right, data)
+            return root
+        if root.left is None:
+            temp = root.right
+            del root
+            return temp
+        elif root.right is None:
+            temp = root.left
+            del root
+            return temp
+        else:
+            succParent = root
+            succ = root.right
+            while succ.left is not None:
+                succParent = succ
+                succ = succ.left
+            if succParent != root:
+                succParent.left = succ.right
+            else:
+                succParent.right = succ.right
+            root.data = succ.data
+            del succ
+            return root
     
-    def PostOrder(self):
-        if self.left:
-            self.left.PostOrder()
-        if self.right:
-            self.right.PostOrder()
-        print(self.root," ",end = "")
+    def inOrder(self, root):
+        if root is not None:
+            self.inOrder(root.left)
+            print(root.data, end='-->')
+            self.inOrder(root.right)
     
-    def Display(self):
-        print()
-        
-obj = Binary_Search_Tree(int(input("Enter Root Node : ")))
-arr = [20,4,30,1,5,6]
-for i in arr:
-    obj.Insert(i)
-obj.Search(4)
-obj.InOrder()
-print()
-obj.PreOrder()
-print()
-obj.PostOrder()
-print()
+    def preOrder(self, root):
+        if root is not None:
+            print(root.data, end='-->')
+            self.preOrder(root.left)
+            self.preOrder(root.right)
+    
+    def postOrder(self, root):
+        if root is not None:
+            self.postOrder(root.left)
+            self.postOrder(root.right)
+            print(root.data, end='-->')
