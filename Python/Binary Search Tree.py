@@ -2,7 +2,7 @@ class Node:
     def __init__(self,data):
         self.data, self.left, self.right = data, None, None
 
-class BinarysearchNodeTree:
+class BinarySearchTree:
     def __init__(self):
         self.root, self.nodes = None, 0
     
